@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bio-Inspired Adaptive Fin — Justin Li</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project-style.css" />
+</head>
+<body class="project-page">
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Justin<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="back-bar">
+    <div class="container">
+      <a href="../index.html#projects" class="back-link">Back to all projects</a>
+    </div>
+  </div>
+
+  <div class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="article-category">Bio-Inspired Design · Mechanical Testing</span>
+        <span class="article-date">2024 — USC</span>
+      </div>
+      <h1 class="article-title">Bio-Inspired Adaptive Fin for Enhanced Underwater Propulsion</h1>
+      <p class="article-subtitle">Designing fins that flex like a fish — and building a test rig precise enough to actually prove it works.</p>
+      <div class="article-tags">
+        <span class="tag teal">Bio-Inspired Design</span>
+        <span class="tag teal">Fabrication</span>
+        <span class="tag">Test Rig Design</span>
+        <span class="tag">Load Sensing</span>
+        <span class="tag">Structural Analysis</span>
+        <span class="tag">Fluid Dynamics</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    HERO IMAGE — replace this with:
+    <img src="../images/fin-hero.jpg" alt="Adaptive fin test rig" class="article-hero-image" />
+  -->
+  <div class="article-hero-placeholder">🐟</div>
+
+  <div class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <p class="lead-paragraph">
+          <!-- EDIT: Opening paragraph — why fins, why adaptive, why does this matter? -->
+          Fish have solved underwater propulsion problems that engineers are still working on. A tuna can accelerate faster than most AUVs, using a flexible tail that actively changes stiffness mid-stroke. This project started with a simple question: can we capture that behavior in a manufacturable, testable mechanical system?
+        </p>
+
+        <p>
+          <!-- EDIT: More context — course, team, scope. -->
+          [Add project context here — was this a class project, independent research? How long did it run? What were the specific performance targets you were designing toward?]
+        </p>
+
+        <!-- IMAGE: right float -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/fin-inspiration.jpg" alt="Bio-inspiration reference" />
+          -->
+          <div class="img-placeholder">📷 Add reference image (fish, existing AUV fins, etc.)</div>
+          <figcaption>[Caption: biological inspiration or existing work you referenced]</figcaption>
+        </figure>
+
+        <h2>Design Requirements</h2>
+
+        <p>
+          <!-- EDIT: What were your constraints? Stiffness targets, load limits, material restrictions, manufacturability requirements? -->
+          The fin had to meet three hard constraints: [constraint 1 — e.g. target stiffness range], [constraint 2 — e.g. must survive X cycles without fatigue failure], and [constraint 3 — e.g. manufacturable with available makerspace tooling]. Anything beyond those was fair game.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="num">[X]</div>
+            <div class="desc">Fin configurations tested</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">[X]</div>
+            <div class="desc">Materials evaluated</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">[X]%</div>
+            <div class="desc">Thrust improvement over baseline</div>
+          </div>
+          <!-- EDIT: Replace with your real numbers -->
+        </div>
+
+        <h2>Fin Design and Fabrication</h2>
+
+        <!-- IMAGE: left float -->
+        <figure class="img-left">
+          <!--
+            Replace with: <img src="../images/fin-cad.jpg" alt="Fin CAD model" />
+          -->
+          <div class="img-placeholder">📷 Add CAD model or design sketch here</div>
+          <figcaption>[Caption: CAD model, cross-section, or geometry sketch]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: How did you approach the geometry? What influenced the planform shape, chord distribution, flexibility gradient? -->
+          [Describe the fin geometry — shape, dimensions, how you parameterized it for testing. If you tested multiple geometries, explain the design of experiments.]
+        </p>
+
+        <p>
+          <!-- EDIT: Materials and fabrication process. -->
+          [Describe what materials you used and why — silicone, carbon fiber, TPU, a composite layup? How did you fabricate each fin? What tooling did you use?]
+        </p>
+
+        <div class="clearfix"></div>
+
+        <!-- IMAGE: full width — good for showing multiple fin variants side by side -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/fin-variants.jpg" alt="All fin variants laid out" />
+          -->
+          <div class="img-placeholder">📷 Add a full-width image — fin variants, fabrication steps, or completed assemblies</div>
+          <figcaption>[Caption: e.g. "Four fin configurations tested, varying chord length and material stiffness."]</figcaption>
+        </figure>
+
+        <h2>Building the Test Rig</h2>
+
+        <p>
+          <!-- EDIT: This is a critical section — show your engineering thinking. What made the rig hard to build? What did you instrument it with? -->
+          A fin that looks right in CAD is useless without data to validate it. The test rig had to generate controlled, repeatable oscillating motion at [X] Hz, measure thrust output with [X] resolution, and capture deformation without interfering with the flow. [Describe the overall rig architecture.]
+        </p>
+
+        <!-- IMAGE: right float -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/fin-rig.jpg" alt="Test rig assembly" />
+          -->
+          <div class="img-placeholder">📷 Add test rig photo here</div>
+          <figcaption>[Caption: test rig in the water tank or on the bench]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Sensing and instrumentation details. -->
+          [Describe your sensing setup — load cells, force gauges, optical tracking, strain gauges? How did you calibrate them? What was your repeatability?]
+        </p>
+
+        <div class="pullquote">
+          <p>"[Pull quote — a key design insight or lesson from the test rig. E.g.: 'Getting ±2% repeatability required three iterations on the rig fixture before we trusted the data.']"</p>
+        </div>
+
+        <h2>Results</h2>
+
+        <!-- IMAGE: full width — good for showing test data plot or results comparison -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/fin-results.jpg" alt="Thrust and deformation results" />
+          -->
+          <div class="img-placeholder">📷 Add results graph, data plot, or test photo here</div>
+          <figcaption>[Caption: e.g. "Thrust vs. frequency for all four fin configurations."]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: What did the data show? Be specific — numbers, trends, surprises. -->
+          [Describe your results. Which configuration performed best? By how much? What surprised you? What agreed with or contradicted your initial predictions?]
+        </p>
+
+        <h2>What I'd Change</h2>
+
+        <p>
+          <!-- EDIT: Honest reflection. -->
+          [What were the limitations of this approach? What would you do differently with more time, budget, or tooling? This is a chance to demonstrate engineering judgment — show you understand the boundaries of your own work.]
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Justin Li &nbsp;·&nbsp; USC Viterbi School of Engineering '26</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+
+</body>
+</html>

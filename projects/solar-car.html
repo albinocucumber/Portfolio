@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USC Solar Car Chassis — Justin Li</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project-style.css" />
+</head>
+<body class="project-page">
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Justin<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="back-bar">
+    <div class="container">
+      <a href="../index.html#projects" class="back-link">Back to all projects</a>
+    </div>
+  </div>
+
+  <div class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="article-category">Structural Design · FEA · Team Lead</span>
+        <span class="article-date">Sep 2024 – Sep 2025 — USC Solar Car</span>
+      </div>
+      <h1 class="article-title">USC Solar Car — Chromoly Steel Space Frame Chassis</h1>
+      <p class="article-subtitle">Leading chassis design for a competition solar car: from blank CAD file to a validated space frame that meets safety and weight targets simultaneously.</p>
+      <div class="article-tags">
+        <span class="tag teal">SolidWorks</span>
+        <span class="tag teal">FEA</span>
+        <span class="tag teal">Chromoly Steel</span>
+        <span class="tag">Space Frame</span>
+        <span class="tag">System Integration</span>
+        <span class="tag">Team Lead</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    HERO IMAGE — replace this with:
+    <img src="../images/solar-car-hero.jpg" alt="Solar car chassis" class="article-hero-image" />
+  -->
+  <div class="article-hero-placeholder">☀️</div>
+
+  <div class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <p class="lead-paragraph">
+          <!-- EDIT: Opening — set the stakes. What makes a solar car chassis hard? What were the competing constraints? -->
+          A solar car chassis has to do things that are almost contradictory: be light enough to preserve the power budget, stiff enough to protect the driver in a crash, and designed around a body shape that's dictated by aerodynamics. Getting all three right at the same time is the whole job.
+        </p>
+
+        <p>
+          <!-- EDIT: Your role, team size, timeline. -->
+          I led chassis design for USC Solar Car from September 2024 through the competition in [month, year]. [Add team size, competition name, and any relevant competition rules that drove design decisions — e.g. roll hoop requirements, weight limits, driver compartment minimums.]
+        </p>
+
+        <!-- IMAGE: right float -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/solar-car-overview.jpg" alt="Full chassis model" />
+          -->
+          <div class="img-placeholder">📷 Add full chassis CAD model or render here</div>
+          <figcaption>[Caption: full chassis model, wireframe, or rendered view]</figcaption>
+        </figure>
+
+        <h2>Design Requirements and Constraints</h2>
+
+        <p>
+          <!-- EDIT: What were the hard requirements? Competition rules, safety standards, weight budget, packaging constraints from aero body? -->
+          The chassis had to meet [competition name] structural regulations, including a minimum [X] kN rollover load capacity and [X] mm driver clearance. Weight budget coming from the electrical team capped the chassis at [X] kg. The aerodynamic body shape — fixed by the aero team early in the year — dictated the outer envelope the frame had to fit within.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="num">&gt;2</div>
+            <div class="desc">Factor of safety achieved</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">20+</div>
+            <div class="desc">FEA simulations run</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">[X] kg</div>
+            <div class="desc">Final chassis weight</div>
+          </div>
+          <!-- EDIT: Replace the last stat with your real number -->
+        </div>
+
+        <h2>Material Selection: Why Chromoly</h2>
+
+        <p>
+          <!-- EDIT: Walk through the material selection decision. Why Chromoly over aluminum, carbon fiber, mild steel? -->
+          4130 Chromoly steel was chosen over aluminum and carbon fiber for three reasons: weldability in our shop, a well-characterized fatigue profile, and a strength-to-weight ratio that met targets without the layup complexity of composites. [Expand on tradeoffs — cost, lead time, the team's fabrication capabilities, etc.]
+        </p>
+
+        <!-- IMAGE: left float -->
+        <figure class="img-left">
+          <!--
+            Replace with: <img src="../images/solar-car-tubing.jpg" alt="Chromoly tubing layout" />
+          -->
+          <div class="img-placeholder">📷 Add material/tubing photo or spec comparison table</div>
+          <figcaption>[Caption: tubing spec, material comparison, or raw stock]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Tube sizing, wall thickness decisions. -->
+          [Describe tube sizing — OD, wall thickness, and how you arrived at those numbers. Did you run preliminary hand calculations before FEA? What cross-sections did you use for different members?]
+        </p>
+
+        <div class="clearfix"></div>
+
+        <h2>Space Frame Design Process</h2>
+
+        <!-- IMAGE: full width — good for showing chassis evolution or multiple design iterations -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/solar-car-iterations.jpg" alt="Chassis design iterations" />
+          -->
+          <div class="img-placeholder">📷 Add full-width image — chassis iterations, topology sketches, or early vs. final comparison</div>
+          <figcaption>[Caption: e.g. "Three chassis iterations, each shaving weight while maintaining FOS."]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: How did you approach the space frame topology? What load paths were you designing for? How did aerodynamic and driver packaging constraints shape the geometry? -->
+          [Walk through your design process — how you established the primary load path, where you triangulated, where you made geometry compromises to accommodate the aero body or electrical components. This is the core engineering section — be specific.]
+        </p>
+
+        <div class="pullquote">
+          <p>"[Pull quote — a key decision point or design insight. E.g.: 'The rear suspension pickup geometry forced us to run a diagonal brace that added 300g — but removing it dropped the FOS from 2.4 to 1.6 in side impact.']"</p>
+        </div>
+
+        <h2>FEA Validation</h2>
+
+        <!-- IMAGE: right float — FEA stress plot -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/solar-car-fea.jpg" alt="FEA stress plot" />
+          -->
+          <div class="img-placeholder">📷 Add FEA stress plot or displacement map here</div>
+          <figcaption>[Caption: load case, peak stress location, FOS callout]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Describe your FEA setup — load cases, boundary conditions, mesh settings. -->
+          FEA was run in SolidWorks Simulation across [X] load cases: frontal impact at [X] g, side impact at [X] g, rollover at [X] kN, and road load at [X] g vertical. Mesh element size was [X] mm globally with refinement at weld joints and tube intersections.
+        </p>
+
+        <p>
+          <!-- EDIT: Results from FEA — where was the critical point? How did you iterate based on FEA results? -->
+          [Describe what the FEA showed — where was peak stress? What did you change after seeing the results? How many iterations did it take to get above FOS 2 everywhere?]
+        </p>
+
+        <h2>Integration with Other Subsystems</h2>
+
+        <p>
+          <!-- EDIT: How did you coordinate with electrical and mechanical teams? What compromises had to be made? -->
+          [Describe the cross-functional coordination — battery box mounting, motor controller placement, suspension hard points, solar panel attachment. What changed about your chassis design because of a request from another subsystem?]
+        </p>
+
+        <h2>Competition Outcome</h2>
+
+        <p>
+          <!-- EDIT: How did the car actually perform? What did you learn? -->
+          [Describe competition results, or what happened during final fabrication and testing. If the car hasn't competed yet, describe build status and what validation you've done. Be honest about what worked and what you'd change.]
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Justin Li &nbsp;·&nbsp; USC Viterbi School of Engineering '26</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+
+</body>
+</html>

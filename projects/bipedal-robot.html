@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bi-Pedal Robot Simulation — Justin Li</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project-style.css" />
+</head>
+<body class="project-page">
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Justin<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="back-bar">
+    <div class="container">
+      <a href="../index.html#projects" class="back-link">Back to all projects</a>
+    </div>
+  </div>
+
+  <div class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="article-category">Robotics · Controls</span>
+        <span class="article-date">2024 — USC</span>
+      </div>
+      <h1 class="article-title">Bi-Pedal Robot Modeling &amp; Simulation</h1>
+      <p class="article-subtitle">Designing and optimizing an MPC controller for a bipedal robot across walking, running, stair climbing, and obstacle courses — all in MuJoCo.</p>
+      <div class="article-tags">
+        <span class="tag teal">MuJoCo</span>
+        <span class="tag teal">MPC</span>
+        <span class="tag teal">Controls</span>
+        <span class="tag">Simulation</span>
+        <span class="tag">Robot Dynamics</span>
+        <span class="tag">Optimization</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    HERO IMAGE — replace this with:
+    <img src="../images/robot-hero.jpg" alt="Bipedal robot simulation" class="article-hero-image" />
+  -->
+  <div class="article-hero-placeholder">🤖</div>
+
+  <div class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <p class="lead-paragraph">
+          <!-- EDIT: Opening — frame the problem. Why is bipedal locomotion hard? What makes MPC a good fit? -->
+          Getting a bipedal robot to walk is solved. Getting it to walk, run, climb stairs, and navigate obstacles — all with one controller — is not. This project tackled that generalization problem using Model Predictive Control in MuJoCo, treating each locomotion mode as a different constraint set rather than a different controller entirely.
+        </p>
+
+        <p>
+          <!-- EDIT: Course or research context. -->
+          [Add context — which class was this for? Was it a team or individual project? What was the assignment or goal?]
+        </p>
+
+        <!-- IMAGE: right float -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/robot-model.jpg" alt="Robot model in MuJoCo" />
+          -->
+          <div class="img-placeholder">📷 Add MuJoCo robot model screenshot here</div>
+          <figcaption>[Caption: robot model, joint diagram, or URDF visualization]</figcaption>
+        </figure>
+
+        <h2>Robot Model</h2>
+
+        <p>
+          <!-- EDIT: Describe the robot. How many DOF? What joint limits? Where did the model come from? -->
+          The robot model has [X] degrees of freedom across [X] actuated joints. Joint angle limits ranged from [X] to [X] degrees at the hip and [X] to [X] at the knee. [Describe the robot's dimensions, mass, inertia properties — anything that shaped the control problem.]
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="num">[X]</div>
+            <div class="desc">Degrees of freedom</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">[X]</div>
+            <div class="desc">Locomotion modes</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">[X] ms</div>
+            <div class="desc">Control loop frequency</div>
+          </div>
+          <!-- EDIT: Replace with real numbers -->
+        </div>
+
+        <h2>MPC Controller Design</h2>
+
+        <!-- IMAGE: left float — good for a diagram or block diagram -->
+        <figure class="img-left">
+          <!--
+            Replace with: <img src="../images/robot-control-diagram.jpg" alt="MPC control diagram" />
+          -->
+          <div class="img-placeholder">📷 Add control architecture diagram here</div>
+          <figcaption>[Caption: MPC block diagram, prediction horizon illustration, or cost function breakdown]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Describe the MPC formulation — prediction horizon, cost function, constraints. -->
+          The controller uses a receding horizon of [X] timesteps, re-optimizing at each control step. The cost function penalized deviation from a reference trajectory, joint velocity, and contact force asymmetry. Hard constraints enforced joint angle limits and maintained foot contact forces within friction cone bounds.
+        </p>
+
+        <p>
+          <!-- EDIT: How did you tune it? What software/solvers did you use? -->
+          [Describe your optimization solver, tuning process, and any approximations you made to keep the controller real-time capable. Did you linearize the dynamics? Use a reduced-order model?]
+        </p>
+
+        <div class="clearfix"></div>
+
+        <div class="pullquote">
+          <p>"[Pull quote — a key insight from tuning or a surprising result. E.g.: 'Relaxing the ankle joint limits by just 8 degrees was the difference between stable stair climbing and consistent falls.']"</p>
+        </div>
+
+        <h2>Locomotion Modes</h2>
+
+        <!-- IMAGE: full width — show all 4 modes side by side if possible -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/robot-modes.jpg" alt="Four locomotion modes" />
+          -->
+          <div class="img-placeholder">📷 Add screenshots of all locomotion modes — walking, running, stairs, obstacle course</div>
+          <figcaption>[Caption: e.g. "Left to right: walking at 1.2 m/s, running at 2.8 m/s, stair ascent, obstacle course traversal."]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Walk through each mode — what changed in the controller, what were the challenges? -->
+          [Describe each locomotion mode. What reference trajectory did you use? What constraint changes were needed between walking and running? How did you handle stair contact timing? What made the obstacle course hard?]
+        </p>
+
+        <h2>Results and Limitations</h2>
+
+        <!-- IMAGE: small float right — good for a results plot or metric comparison -->
+        <figure class="img-small">
+          <!--
+            Replace with: <img src="../images/robot-results.jpg" alt="Performance metrics" />
+          -->
+          <div class="img-placeholder tall">📷 Results plot or metric table</div>
+          <figcaption>[Caption]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: What did the controller achieve? What metrics did you hit? Where did it fail? -->
+          [Describe performance across modes — success rates, speed, energy efficiency, or stability margins. Be honest about failure cases and what caused them.]
+        </p>
+
+        <p>
+          <!-- EDIT: What would you change? -->
+          [What would a next iteration look like? Reinforcement learning? A higher-fidelity model? Real hardware? Show your thinking about where this work could go.]
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Justin Li &nbsp;·&nbsp; USC Viterbi School of Engineering '26</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+
+</body>
+</html>

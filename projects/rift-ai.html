@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RIFT AI — Justin Li</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="project-style.css" />
+</head>
+<body class="project-page">
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html">Justin<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <div class="back-bar">
+    <div class="container">
+      <a href="../index.html#projects" class="back-link">Back to all projects</a>
+    </div>
+  </div>
+
+  <div class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="article-category">AI Hardware · Embedded Systems</span>
+        <span class="article-date">2024 — USC</span>
+      </div>
+      <h1 class="article-title">RIFT AI: Making Your Fridge Digital</h1>
+      <p class="article-subtitle">A Raspberry Pi 5 system that uses computer vision to track what's in your fridge — built to run for days on end without babysitting.</p>
+      <div class="article-tags">
+        <span class="tag teal">Raspberry Pi 5</span>
+        <span class="tag teal">Computer Vision</span>
+        <span class="tag">3D Printing</span>
+        <span class="tag">DFM</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">Thermal Management</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    HERO IMAGE — replace this with:
+    <img src="../images/rift-hero.jpg" alt="RIFT AI device" class="article-hero-image" />
+  -->
+  <div class="article-hero-placeholder">🍎</div>
+
+  <div class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <p class="lead-paragraph">
+          <!-- EDIT: Replace this with your opening paragraph. Set the scene — what problem does this solve? -->
+          The average household throws away roughly 30% of the food it buys. Most of the time, it's not because people don't care. It's because nobody actually knows what's sitting in the back of the fridge. RIFT AI started as a straightforward question: what if your fridge could just tell you?
+        </p>
+
+        <p>
+          <!-- EDIT: Expand on the problem or motivation here. -->
+          [Add more context about what motivated this project — a class, a hackathon, a personal frustration. This is a good place to tell the "why" story.]
+        </p>
+
+        <!-- IMAGE: float right alongside the next paragraph -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/rift-overview.jpg" alt="RIFT AI system overview" />
+          -->
+          <div class="img-placeholder">📷 Add system overview photo here</div>
+          <figcaption>The assembled RIFT AI unit mounted inside a refrigerator door — [add your caption].</figcaption>
+        </figure>
+
+        <h2>The Hardware Setup</h2>
+
+        <p>
+          <!-- EDIT: Describe the hardware you chose and why. -->
+          At the core of RIFT is a Raspberry Pi 5, chosen for its processing headroom and GPIO flexibility. A wide-angle camera module sits at the top of the enclosure, angled to cover the full interior shelf. A light sensor detects when the door opens, triggering a capture — no need to run vision inference continuously, which would kill the power budget.
+        </p>
+
+        <p>
+          <!-- EDIT: Go deeper on the technical tradeoffs. -->
+          [Describe the specific sensors, how they're wired, what connectors or breakout boards you used, and any decisions you made along the way — e.g. why this camera over another option.]
+        </p>
+
+        <!-- STATS ROW: highlight key numbers -->
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="num">5</div>
+            <div class="desc">Raspberry Pi 5</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">3</div>
+            <div class="desc">Sensors integrated</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">72+</div>
+            <div class="desc">Hours continuous operation</div>
+          </div>
+          <!-- EDIT: Replace or add stat boxes with your real numbers -->
+        </div>
+
+        <h2>Designing the Housing</h2>
+
+        <!-- IMAGE: float left -->
+        <figure class="img-left">
+          <!--
+            Replace with: <img src="../images/rift-housing-cad.jpg" alt="CAD model of housing" />
+          -->
+          <div class="img-placeholder">📷 Add CAD/housing photo here</div>
+          <figcaption>[Caption: housing CAD model or print in progress]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: Talk about the enclosure design process. -->
+          The housing went through [X] iterations before locking in a design that worked. The main constraints were: it had to mount cleanly inside a standard fridge door shelf without permanent modification, route cables without pinching them when the door closed, and dissipate heat passively in a cold, humid environment.
+        </p>
+
+        <p>
+          <!-- EDIT: DFM/print process details. -->
+          All parts were 3D printed in [material — e.g. PETG for temperature resistance]. Print settings, wall thickness, and infill were chosen to balance strength with print time. [Describe any specific DFM decisions — snap fits, press-fit tolerances, etc.]
+        </p>
+
+        <div class="clearfix"></div>
+
+        <!-- IMAGE: full width -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/rift-printed-parts.jpg" alt="Printed parts layout" />
+          -->
+          <div class="img-placeholder">📷 Add a full-width image here — printed parts, assembly, or test setup</div>
+          <figcaption>[Caption for full-width image]</figcaption>
+        </figure>
+
+        <h2>Thermal and Power Management</h2>
+
+        <p>
+          <!-- EDIT: Describe thermal strategy. -->
+          Running a Raspberry Pi 5 inside a refrigerator sounds like it should solve the cooling problem automatically. It doesn't. The challenge isn't heat dissipation — it's condensation. [Describe how you managed this, e.g. conformal coating, sealed connectors, ventilation baffles.]
+        </p>
+
+        <div class="pullquote">
+          <p>"[Add a pull quote here — a key insight, lesson learned, or memorable line from the project.]"</p>
+        </div>
+
+        <p>
+          <!-- EDIT: Power strategy. -->
+          [Describe power management — what drew how much current, what duty cycling strategy you used, how long it ran on a charge or from wall power, etc.]
+        </p>
+
+        <h2>Results and What I'd Do Differently</h2>
+
+        <!-- IMAGE: small float right -->
+        <figure class="img-small">
+          <!--
+            Replace with: <img src="../images/rift-demo.jpg" alt="RIFT in action" />
+          -->
+          <div class="img-placeholder tall">📷 Demo photo</div>
+          <figcaption>[Caption]</figcaption>
+        </figure>
+
+        <p>
+          <!-- EDIT: What worked, what didn't. Be specific. -->
+          [Describe what the system actually achieved — recognition accuracy, uptime, user testing, etc. Be honest about what didn't work perfectly.]
+        </p>
+
+        <p>
+          <!-- EDIT: Lessons learned. -->
+          [What would you redesign if you had another pass? What surprised you most during testing? This is the section that makes portfolios stand out — recruiters want to see engineering judgment, not just a list of things that went well.]
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Justin Li &nbsp;·&nbsp; USC Viterbi School of Engineering '26</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+
+</body>
+</html>
