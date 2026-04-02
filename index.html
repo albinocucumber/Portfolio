@@ -29,9 +29,9 @@
     /* Photo */
     .hero-photo {
       flex-shrink: 0;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      border-radius: 10%;
       background: linear-gradient(145deg, var(--teal-lt), #C8E8EF);
       border: 3px solid var(--border);
       overflow: hidden;
@@ -46,11 +46,6 @@
       letter-spacing: 0.05em;
       box-shadow: var(--shadow);
     }
-
-    /* 
-      TO ADD YOUR PHOTO: replace the entire .hero-photo div contents with:
-      <img src="images/your-photo.jpg" alt="Justin Li" style="width:100%;height:100%;object-fit:cover;" />
-    */
 
     /* Text */
     .hero-text { flex: 1; }
@@ -394,17 +389,8 @@
   <section id="hero">
     <div class="container">
       <div class="hero-inner fade-up">
-
-        <!-- PHOTO — swap this div for an <img> tag when you have a photo -->
         <div class="hero-photo">
-          <!--
-            Replace everything inside this div with:
-            <img src="images/your-photo.jpg" alt="Justin Li" style="width:100%;height:100%;object-fit:cover;" />
-          -->
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+          <img src="images/headshot.jpg" alt="Justin Li" style="width:100%;height:100%;object-fit:cover;object-position:45% center;" />
         </div>
 
         <div class="hero-text">
@@ -449,13 +435,30 @@
 
       <div class="projects-grid">
 
-        <!-- CARD 1: RIFT AI -->
-        <a href="projects/rift-ai.html" class="project-card fade-up">
+        <!-- CARD 1: MULTIPLY LABS -->
+        <a href="projects/multiply-labs.html" class="project-card fade-up">
           <div class="project-image">
-            <!--
-              ADD IMAGE: <img src="../images/rift-ai-cover.jpg" alt="RIFT AI" />
-            -->
-            🍎
+            <img src="../images/ml_logo.png" alt="Multiply Labs" />
+          </div>
+          <div class="project-body">
+            <div class="project-category">Robotics Hardware · GMP Design</div>
+            <h3>Multiply Labs — Robotic Cartridge Redesign</h3>
+            <p>Redesigned robotic cartridges while preserving compatibility — 95% less assembly time, 80% lower part cost per cartridge.</p>
+          </div>
+          <div class="project-footer">
+            <div class="project-footer-tags">
+              <span class="tag teal">Injection Molding</span>
+              <span class="tag">DFA</span>
+              <span class="tag">GMP</span>
+            </div>
+            <span class="read-more">Read more</span>
+          </div>
+        </a>
+
+        <!-- CARD 2: RIFT AI -->
+        <a href="projects/rift-ai.html" class="project-card fade-up" style="transition-delay:0.07s">
+          <div class="project-image">
+            <img src="../images/rift_logo.png" alt="RIFT AI" />
           </div>
           <div class="project-body">
             <div class="project-category">AI Hardware · Embedded Systems</div>
@@ -472,13 +475,10 @@
           </div>
         </a>
 
-        <!-- CARD 2: ADAPTIVE FIN -->
-        <a href="projects/adaptive-fin.html" class="project-card fade-up" style="transition-delay:0.07s">
+        <!-- CARD 3: ADAPTIVE FIN -->
+        <a href="projects/adaptive-fin.html" class="project-card fade-up" style="transition-delay:0.14s">
           <div class="project-image">
-            <!--
-              ADD IMAGE: <img src="../images/fin-cover.jpg" alt="Adaptive Fin" />
-            -->
-            🐟
+            <img src="../images/fin_ray_swimming.avif" alt="Adaptive Fin" />
           </div>
           <div class="project-body">
             <div class="project-category">Bio-Inspired Design · Mechanical Testing</div>
@@ -495,8 +495,8 @@
           </div>
         </a>
 
-        <!-- CARD 3: BIPEDAL ROBOT -->
-        <a href="projects/bipedal-robot.html" class="project-card fade-up" style="transition-delay:0.14s">
+        <!-- CARD 4: BIPEDAL ROBOT -->
+        <a href="projects/bipedal-robot.html" class="project-card fade-up" style="transition-delay:0.21s">
           <div class="project-image">
             <!--
               ADD IMAGE: <img src="../images/robot-cover.jpg" alt="Bipedal Robot" />
@@ -518,8 +518,8 @@
           </div>
         </a>
 
-        <!-- CARD 4: SOLAR CAR -->
-        <a href="projects/solar-car.html" class="project-card fade-up" style="transition-delay:0.21s">
+        <!-- CARD 5: SOLAR CAR -->
+        <a href="projects/solar-car.html" class="project-card fade-up" style="transition-delay:0.28s">
           <div class="project-image">
             <!--
               ADD IMAGE: <img src="../images/solar-car-cover.jpg" alt="Solar Car Chassis" />
@@ -541,8 +541,8 @@
           </div>
         </a>
 
-        <!-- CARD 5: COMPOSITES -->
-        <a href="projects/composites.html" class="project-card fade-up" style="transition-delay:0.28s">
+        <!-- CARD 6: COMPOSITES -->
+        <a href="projects/composites.html" class="project-card fade-up" style="transition-delay:0.35s">
           <div class="project-image">
             <!--
               ADD IMAGE: <img src="../images/composites-cover.jpg" alt="Carbon Fiber Composites" />
@@ -559,29 +559,6 @@
               <span class="tag teal">Carbon Fiber</span>
               <span class="tag">Vacuum Infusion</span>
               <span class="tag">CNC</span>
-            </div>
-            <span class="read-more">Read more</span>
-          </div>
-        </a>
-
-        <!-- CARD 6: MULTIPLY LABS -->
-        <a href="projects/multiply-labs.html" class="project-card fade-up" style="transition-delay:0.35s">
-          <div class="project-image">
-            <!--
-              ADD IMAGE: <img src="../images/multiply-cover.jpg" alt="Multiply Labs" />
-            -->
-            ⚙️
-          </div>
-          <div class="project-body">
-            <div class="project-category">Robotics Hardware · GMP Design</div>
-            <h3>Multiply Labs — Robotic Cartridge Redesign</h3>
-            <p>Redesigned robotic cartridges while preserving compatibility — 95% less assembly time, 80% lower part cost per cartridge.</p>
-          </div>
-          <div class="project-footer">
-            <div class="project-footer-tags">
-              <span class="tag teal">Injection Molding</span>
-              <span class="tag">DFA</span>
-              <span class="tag">GMP</span>
             </div>
             <span class="read-more">Read more</span>
           </div>

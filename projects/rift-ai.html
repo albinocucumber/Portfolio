@@ -33,147 +33,214 @@
   <div class="article-header">
     <div class="container">
       <div class="article-meta">
-        <span class="article-category">AI Hardware · Embedded Systems</span>
-        <span class="article-date">2024 — USC</span>
+        <span class="article-category">AI Hardware · Embedded Systems · Product Design</span>
+        <span class="article-date">2024 — USC · Ongoing</span>
       </div>
       <h1 class="article-title">RIFT AI: Making Your Fridge Digital</h1>
-      <p class="article-subtitle">A Raspberry Pi 5 system that uses computer vision to track what's in your fridge — built to run for days on end without babysitting.</p>
+      <p class="article-subtitle">A Raspberry Pi 5 IoT device and companion app that automatically logs everything in your fridge — quantities, expiration dates, and nutrition — so you never stare blankly into it again wondering what to cook.</p>
       <div class="article-tags">
         <span class="tag teal">Raspberry Pi 5</span>
-        <span class="tag teal">Computer Vision</span>
-        <span class="tag">3D Printing</span>
-        <span class="tag">DFM</span>
+        <span class="tag teal">IoT Hardware</span>
+        <span class="tag teal">3D Printing</span>
+        <span class="tag teal">DFM</span>
+        <span class="tag">Computer Vision</span>
         <span class="tag">Embedded Systems</span>
-        <span class="tag">Thermal Management</span>
+        <span class="tag">Power Management</span>
+        <span class="tag">WiFi</span>
       </div>
     </div>
   </div>
 
-  <!--
-    HERO IMAGE — replace this with:
-    <img src="../images/rift-hero.jpg" alt="RIFT AI device" class="article-hero-image" />
-  -->
-  <div class="article-hero-placeholder">🍎</div>
+    <img src="../images/rift_logo.png" alt="RIFT AI device mounted in refrigerator" class="article-hero-image" />
 
   <div class="article-body">
     <div class="container">
       <div class="article-content">
 
         <p class="lead-paragraph">
-          <!-- EDIT: Replace this with your opening paragraph. Set the scene — what problem does this solve? -->
-          The average household throws away roughly 30% of the food it buys. Most of the time, it's not because people don't care. It's because nobody actually knows what's sitting in the back of the fridge. RIFT AI started as a straightforward question: what if your fridge could just tell you?
+          Most people don't throw food away on purpose. They just forget it's there. A container of leftovers slides to the back of a shelf, a bag of produce gets buried behind the milk, and three days later it all goes in the trash. RIFT AI is a small camera that mounts inside your fridge and automatically tracks everything in it — what you have, how much, and when it expires — so the food lifecycle stops being something you have to manage in your head.
         </p>
 
         <p>
-          <!-- EDIT: Expand on the problem or motivation here. -->
-          [Add more context about what motivated this project — a class, a hackathon, a personal frustration. This is a good place to tell the "why" story.]
+          This is a four-person cross-functional project. My role covers hardware: the physical device, the enclosure, the electronics, and the system that connects the camera to the cloud. My teammates handle the AI model and server pipeline, and the mobile app. What follows covers the hardware side of the build in detail.
         </p>
 
-        <!-- IMAGE: float right alongside the next paragraph -->
+        <!-- IMAGE: float right -->
         <figure class="img-right">
-          <!--
-            Replace with: <img src="../images/rift-overview.jpg" alt="RIFT AI system overview" />
-          -->
-          <div class="img-placeholder">📷 Add system overview photo here</div>
-          <figcaption>The assembled RIFT AI unit mounted inside a refrigerator door — [add your caption].</figcaption>
+          <img src="../images/rift_iso.png" alt="RIFT AI unit mounted inside a fridge" />
+          <figcaption>The RIFT unit mounted on the interior ceiling of a standard refrigerator. The wide-angle lens covers the full shelf opening from a single fixed position.</figcaption>
         </figure>
 
-        <h2>The Hardware Setup</h2>
+        <h2>The Problem Worth Solving</h2>
 
         <p>
-          <!-- EDIT: Describe the hardware you chose and why. -->
-          At the core of RIFT is a Raspberry Pi 5, chosen for its processing headroom and GPIO flexibility. A wide-angle camera module sits at the top of the enclosure, angled to cover the full interior shelf. A light sensor detects when the door opens, triggering a capture — no need to run vision inference continuously, which would kill the power budget.
+          Existing solutions all have real problems. Manual meal-planning apps require you to log everything yourself, which almost nobody keeps up with consistently. Smart fridges cost thousands of dollars and only work if you bought that specific model. Spreadsheet trackers need even more discipline than the apps. None of them give real-time, personalized guidance based on what is actually sitting in front of you.
         </p>
 
         <p>
-          <!-- EDIT: Go deeper on the technical tradeoffs. -->
-          [Describe the specific sensors, how they're wired, what connectors or breakout boards you used, and any decisions you made along the way — e.g. why this camera over another option.]
+          The people who feel this most are novice cooks — who don't always know how to build a meal from a random set of ingredients — and busy households where nobody has time to plan ahead. The result is the same either way: wasted food, poor nutrition, and the daily friction of figuring out dinner from scratch. The RIFT system eliminates that friction by making the fridge itself aware of its own contents.
         </p>
 
-        <!-- STATS ROW: highlight key numbers -->
+        <h2>System Architecture</h2>
+
+        <p>
+          The system splits into three layers: the IoT device, the cloud server, and the mobile app. The device's only job is to capture images and upload them over WiFi. All computation happens in the cloud, which keeps the device cheap, thermally simple, and easy to update without touching the hardware. A 2–3 second round-trip processing time is acceptable — nobody needs millisecond feedback when they're putting groceries away.
+        </p>
+
+        <!-- IMAGE: full width — system diagram -->
+        <figure class="img-center">
+          <img src="../images/rift_flow.png" alt="RIFT system architecture diagram" />
+          <figcaption>End-to-end flow: the Pi captures an image when the fridge opens, uploads it to the Flask server, and the processed result (food name, nutrition data, expiration) surfaces in the companion app.</figcaption>
+        </figure>
+
+        <p>
+          Detection runs a four-level hierarchy, falling back to the next method only when the previous one cannot identify an item. Receipt scanning handles known store items before they even go into the fridge. Barcode scanning covers packaged goods via the OpenFoodFacts database. OCR reads text labels and expiration dates using the Google Vision API. Image classification via YOLOv5 handles produce and anything unlabeled. Each step is faster and more reliable than the next — image recognition only runs when everything simpler has already failed.
+        </p>
+
         <div class="stats-row">
           <div class="stat-box">
-            <div class="num">5</div>
-            <div class="desc">Raspberry Pi 5</div>
+            <div class="num">4</div>
+            <div class="desc">Detection methods in hierarchy</div>
           </div>
           <div class="stat-box">
-            <div class="num">3</div>
-            <div class="desc">Sensors integrated</div>
+            <div class="num">2–3s</div>
+            <div class="desc">Cloud processing time</div>
           </div>
           <div class="stat-box">
-            <div class="num">72+</div>
-            <div class="desc">Hours continuous operation</div>
+            <div class="num">2</div>
+            <div class="desc">Hardware versions (Pi 5 / Zero 2W)</div>
           </div>
-          <!-- EDIT: Replace or add stat boxes with your real numbers -->
+          <div class="stat-box">
+            <div class="num">5.3W</div>
+            <div class="desc">Max power draw (Pi 5)</div>
+          </div>
         </div>
 
-        <h2>Designing the Housing</h2>
+        <h2>Electronics and Component Selection</h2>
+
+        <!-- IMAGE: float right -->
+        <figure class="img-right">
+           <img src="../images/rift_wiring.png" alt="RIFT wiring diagram or assembled board" />
+          <figcaption>Core electronics: Raspberry Pi 5, Pi Camera Module 2, photoresistor with digital conversion board, and buzzer. IR door-direction sensors are planned for a future revision.</figcaption>
+        </figure>
+
+        <p>
+          The electronics stack is intentionally minimal. The core components are a Raspberry Pi 5, a Pi Camera Module 2, a photoresistor paired with a digital conversion board to act as a light sensor, and a buzzer for user feedback. The light sensor is the key trigger: when the fridge door opens and ambient light increases past a threshold, the Pi wakes and starts a capture sequence. When the door closes and light drops, it returns to idle. This event-driven approach keeps average power draw low without any complex scheduling logic.
+        </p>
+
+        <p>
+          Version A uses the Raspberry Pi 5 for its GPIO flexibility, camera interface support, and headroom for future onboard processing. Version B swaps in a Pi Zero 2W — a much smaller footprint and meaningfully lower power draw, at the cost of some flexibility. A future cost reduction pass may replace the Pi Cam 2 with a standard ESP32 camera module, which is significantly cheaper in volume.
+        </p>
+
+        <p>
+          The buzzer gives simple audio confirmation — a beep on wake, another on capture. It is a small feature, but it matters for user trust: people need to know the device is doing something. A future revision replaces it with a small speaker capable of more descriptive alerts.
+        </p>
+
+        <div class="clearfix"></div>
+
+        <h2>Housing Design</h2>
 
         <!-- IMAGE: float left -->
         <figure class="img-left">
-          <!--
-            Replace with: <img src="../images/rift-housing-cad.jpg" alt="CAD model of housing" />
-          -->
-          <div class="img-placeholder">📷 Add CAD/housing photo here</div>
-          <figcaption>[Caption: housing CAD model or print in progress]</figcaption>
+            <img src="../images/rift_housing_iteration.png" alt="RIFT housing CAD model" />
+          <figcaption>Version A housing (Pi 5): 130 × 110 × 40 mm. Vertical configuration chosen for maximum print volume per plate on a standard FDM printer.</figcaption>
         </figure>
 
         <p>
-          <!-- EDIT: Talk about the enclosure design process. -->
-          The housing went through [X] iterations before locking in a design that worked. The main constraints were: it had to mount cleanly inside a standard fridge door shelf without permanent modification, route cables without pinching them when the door closed, and dissipate heat passively in a cold, humid environment.
+          The enclosure had a tight set of competing constraints. It needed the smallest possible footprint — fridge real estate is limited and the device cannot get in the way of normal use. It needed to look intentional and consumer-grade, not like a breadboard in a box. And it had to be 3D printable without supports in a vertical orientation, to keep fabrication simple and repeatable at small volume.
         </p>
 
         <p>
-          <!-- EDIT: DFM/print process details. -->
-          All parts were 3D printed in [material — e.g. PETG for temperature resistance]. Print settings, wall thickness, and infill were chosen to balance strength with print time. [Describe any specific DFM decisions — snap fits, press-fit tolerances, etc.]
+          Version A, housing the Pi 5, is 130 × 110 × 40 mm. Version B for the Zero 2W is 114 × 55 × 35 mm. Both use a vertical configuration to maximize print volume per plate and reduce print time. Airflow openings are incorporated into the shell geometry — the Pi generates real heat even inside a cold enclosure, and passive airflow matters for long-term reliability. Normal-fit interfaces are toleranced to 0.2 mm. Press-fit features — primarily the magnet pockets — are held to 0.1 mm for a reliable interference fit without cracking the shell.
         </p>
 
         <div class="clearfix"></div>
 
         <!-- IMAGE: full width -->
         <figure class="img-center">
-          <!--
-            Replace with: <img src="../images/rift-printed-parts.jpg" alt="Printed parts layout" />
-          -->
-          <div class="img-placeholder">📷 Add a full-width image here — printed parts, assembly, or test setup</div>
-          <figcaption>[Caption for full-width image]</figcaption>
+          <img src="../images/rift_v3_exploded.png" alt="RIFT printed housing parts laid out" />
+          <figcaption>3D printed housing parts before assembly. All geometry is designed to print support-free in a vertical orientation, keeping post-processing to sanding and light cleanup only.</figcaption>
         </figure>
 
-        <h2>Thermal and Power Management</h2>
+        <h2>Mounting System</h2>
 
         <p>
-          <!-- EDIT: Describe thermal strategy. -->
-          Running a Raspberry Pi 5 inside a refrigerator sounds like it should solve the cooling problem automatically. It doesn't. The challenge isn't heat dissipation — it's condensation. [Describe how you managed this, e.g. conformal coating, sealed connectors, ventilation baffles.]
+          The device attaches via magnets embedded in a re-stickable adhesive pad — the same general concept as modern dashcam mounts. A small bracket adheres to the fridge interior surface; the device snaps magnetically onto it. This means no permanent modification, easy removal for battery swaps, and simple repositioning if the user wants to change the viewing angle. The magnet spec is sized to hold through the vibration of a compressor cycling repeatedly — which rules out weaker options that might work in bench testing but fail after weeks of real use.
         </p>
 
         <div class="pullquote">
-          <p>"[Add a pull quote here — a key insight, lesson learned, or memorable line from the project.]"</p>
+          <p>"The fridge door slams multiple times a day. Whatever holds the device in place has to handle that without loosening over months — which ruled out adhesive-only mounting pretty fast."</p>
         </div>
 
-        <p>
-          <!-- EDIT: Power strategy. -->
-          [Describe power management — what drew how much current, what duty cycling strategy you used, how long it ran on a charge or from wall power, etc.]
-        </p>
-
-        <h2>Results and What I'd Do Differently</h2>
+        <h2>Power Strategy</h2>
 
         <!-- IMAGE: small float right -->
         <figure class="img-small">
           <!--
-            Replace with: <img src="../images/rift-demo.jpg" alt="RIFT in action" />
+            Replace with: <img src="../images/rift-power.jpg" alt="RIFT power supply setup" />
           -->
-          <div class="img-placeholder tall">📷 Demo photo</div>
-          <figcaption>[Caption]</figcaption>
+          <div class="img-placeholder tall">📷 Add power supply or battery layout photo</div>
+          <figcaption>MVP: hardwired 25W USB-C supply routed through the door seal via flat ribbon cable.</figcaption>
         </figure>
 
         <p>
-          <!-- EDIT: What worked, what didn't. Be specific. -->
-          [Describe what the system actually achieved — recognition accuracy, uptime, user testing, etc. Be honest about what didn't work perfectly.]
+          The MVP is hardwired. The Pi 5 requires a minimum 25W supply; the Zero 2W variant needs 12W. Routing a flat ribbon cable out through the door seal is a minor inconvenience, but it eliminates the battery design problem entirely during initial development. Flat cable geometry also minimizes the gap at the seal, keeping cold air loss low.
         </p>
 
         <p>
-          <!-- EDIT: Lessons learned. -->
-          [What would you redesign if you had another pass? What surprised you most during testing? This is the section that makes portfolios stand out — recruiters want to see engineering judgment, not just a list of things that went well.]
+          The production target is a hot-swap battery system where the user can swap batteries without powering the device down — no lost state, no reconfiguration. At 5.3W max draw, a 10,000 mAh cell provides approximately 9 hours of operation. That covers a full day of normal door-opening events with comfortable margin. The charge circuit and battery protection design are slated for the next hardware revision.
+        </p>
+
+        <div class="clearfix"></div>
+
+        <h2>The Detection Pipeline</h2>
+
+        <!-- IMAGE: float right -->
+        <figure class="img-right">
+          <!--
+            Replace with: <img src="../images/rift-annotated-output.jpg" alt="Annotated server output with bounding boxes" />
+          -->
+          <div class="img-placeholder">📷 Add example annotated server output — red bounding boxes on label text</div>
+          <figcaption>Server output: bounding boxes drawn around label text detected in the central image region. The matched OpenFoodFacts product and full nutrition data return alongside the annotated image URL.</figcaption>
+        </figure>
+
+        <p>
+          The Flask server — built by my teammate AK — accepts POST requests from the Pi on two routes. The <code>/lookup</code> endpoint receives a barcode string and queries OpenFoodFacts, returning product name, brand, serving size, and full macro and micronutrient data. The <code>/process_image</code> endpoint receives an uploaded image and runs the multi-stage identification pipeline.
+        </p>
+
+        <p>
+          On an image submission: the server first runs OCR via the Google Vision API and draws bounding boxes around words detected in the central image region. If brand and product name are found, it searches OpenFoodFacts and ranks results by image histogram similarity to find the best match. If OCR fails to find a usable match, the server falls back to a YOLOv5 classifier that returns the top three predicted food items with confidence scores. The full response — classification results, OCR output, matched product data, and annotated image URL — is returned as JSON and consumed by the mobile app.
+        </p>
+
+        <div class="clearfix"></div>
+
+        <h2>App Features</h2>
+
+        <p>
+          The companion app is where the hardware investment pays off for the user day-to-day. Recipe suggestions pull from current fridge inventory and prioritize whatever is closest to expiring, filtered against dietary restrictions and a monthly grocery budget. Expiration alerts fire 1–2 days before items go bad — early enough to act on, not so early that the notifications become noise. The app tracks macros and micronutrients, generates shopping lists for missing ingredients, and integrates with Instacart and Amazon Fresh for one-tap grocery delivery or pickup.
+        </p>
+
+        <p>
+          A feedback loop lets users confirm or correct the system's food identifications directly in the app, improving classification accuracy over time. A gamification layer awards points for consistent tracking and minimal food waste, with social sharing for recipes and achievements. All data collection is opt-in. The business model runs on a free tier covering core functionality, with paid upgrades for advanced nutrition analytics and personalized meal planning.
+        </p>
+
+        <h2>Open Problems and Next Steps</h2>
+
+        <!-- IMAGE: full width -->
+        <figure class="img-center">
+          <!--
+            Replace with: <img src="../images/rift-prototype-demo.jpg" alt="RIFT prototype in a real fridge" />
+          -->
+          <div class="img-placeholder">📷 Add current prototype photo — in a real fridge, or showing the full system working end-to-end</div>
+          <figcaption>Current prototype running the full detection pipeline end-to-end. Barcode scanning and OCR-based label reading are functional; the YOLOv5 fallback handles common produce items reliably.</figcaption>
+        </figure>
+
+        <p>
+          The biggest open hardware question is WiFi reliability inside a metal fridge enclosure. Initial tests with the Pi 5's onboard antenna show acceptable signal with the door open, but strength degrades meaningfully when the door is closed. A future revision will likely route the antenna outside the fridge via a short coaxial pigtail through the door seal — the same approach used in some commercial IoT fridge sensors — to maintain a stable connection regardless of door position.
+        </p>
+
+        <p>
+          On the hardware roadmap: hot-swap battery system and protection circuit, speaker upgrade, IR sensor integration for detecting whether items are going in or out of the fridge, and a second round of housing iterations to tighten the form factor further. On the product side, the team is running user surveys to validate which app features drive the most value before locking in the subscription tier structure and beginning a broader beta rollout.
         </p>
 
       </div>
